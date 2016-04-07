@@ -8,6 +8,6 @@ initial begin
 	forever #10 clk = ~clk;
 end
 
-processor MO (reset,clk);
+processor MO(reset,clk);
 
 endmodule

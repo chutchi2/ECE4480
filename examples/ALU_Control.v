@@ -1,5 +1,5 @@
 module ALU_Control(
-	input [3:0] ALUOp;
+	input [3:0] ALUOp,
 	input [5:0] funct,
 	output reg jr,
 	output reg[3:0] ALUfunc);

@@ -20,14 +20,14 @@ five_bit_mux regdest1(.select(RegDst),   .zero_value(inst[20:16]),
 								.one_value(inst[15:11]), .out_value(Rmuxout));
 
 five_bit_mux regdest2(.select(jal), .zero_value(Rmuxout),
-								.one_value(ra), .out_value(regard));
-registers registers(RegWrite, clk, inst[25:11],inst[20:16], regad,
+								.one_value(ra), .out_value(regad));
+registers registers(RegWrite, clk, inst[25:21],inst[20:16], regad,
 							regin, reg1data, reg2data);
 jump_calc j_calc (PCplus4[31:28], inst[25:0], JumpAdrs);
 
-main_control main_control(inst[31:26], ALUop, 
-									ALUSrc, RegDst, Branch,	
-									 bne, Jump, jal, ui);
+main_control main_control(inst[31:26], ALUOp, 
+									ALUSrc, RegDst, RegWrite, MemWrite, MemtoReg,	
+									 MemRead, Branch, bne, Jump, jal, ui);
 
 sign_extend sign_ex (ui, inst[15:0], signex);
 shift_left_two SL2 (signex, Boff);
